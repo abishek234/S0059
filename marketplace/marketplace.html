@@ -1,0 +1,900 @@
+<!-- public/marketplace.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - AI Upcycling Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#E3F2FD',
+                            100: '#BBDEFB',
+                            200: '#90CAF9',
+                            300: '#64B5F6',
+                            400: '#42A5F5',
+                            500: '#2196F3',
+                            600: '#1E88E5',
+                            700: '#1976D2',
+                            800: '#1565C0',
+                            900: '#0D47A1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-4">
+                    <img src="../client/public/static/logo_1.png" alt="AI Upcycling Logo" class="w-12 h-12"/>
+                    <div>
+                        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">AI Upcycling</h1>
+                        <p class="text-xs text-gray-500">Transforming Waste into Value</p>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#products" class="text-gray-700 hover:text-blue-600 font-semibold transition-all hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-box"></i> Products
+                    </a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 font-semibold transition-all hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                    <a href="#how-it-works" class="text-gray-700 hover:text-blue-600 font-semibold transition-all hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-cogs"></i> How It Works
+                    </a>
+                    <a href="#impact" class="text-gray-700 hover:text-blue-600 font-semibold transition-all hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-leaf"></i> Impact
+                    </a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 font-semibold transition-all hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4">
+                    <button onclick="window.location.href='http://localhost:3002/login'" class="hidden sm:block px-6 py-2.5 border-2 border-blue-600 text-blue-600 rounded-xl font-bold hover:bg-blue-50 transition-all transform hover:scale-105">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button onclick="window.location.href='http://localhost:3002/register'" class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl font-bold hover:shadow-lg transition-all transform hover:scale-105">
+                        <i class="fas fa-rocket mr-2"></i>Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-24 overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-20 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        <div class="absolute bottom-20 left-20 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-blue-200 rounded-full mb-8 shadow-lg">
+                    <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-blue-600 font-bold text-sm uppercase tracking-wide">🌍 Sustainable Innovation Platform</span>
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-black text-gray-900 mb-6 leading-tight">
+                    Transform <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Waste</span><br>
+                    into <span class="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">Value</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
+                    Discover innovative upcycling products created from industrial waste using cutting-edge AI technology. 
+                    Join thousands of businesses in the circular economy revolution and make a positive environmental impact.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4 mb-16">
+                    <button onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2">
+                        <i class="fas fa-shopping-bag"></i> Explore Products
+                    </button>
+                    <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all transform hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-play-circle"></i> Learn More
+                    </button>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <!-- Products Card -->
+                    <div class="bg-white rounded-3xl shadow-2xl p-8 border-4 border-blue-100 transform hover:scale-105 transition-all">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <i class="fas fa-box-open text-white text-2xl"></i>
+                        </div>
+                        <div class="text-5xl font-black text-blue-600 mb-2" id="totalProducts">0</div>
+                        <div class="text-gray-600 font-semibold">Active Products</div>
+                        <div class="text-sm text-gray-500 mt-2">Verified & Approved</div>
+                    </div>
+
+                    <!-- CO2 Card -->
+                    <div class="bg-white rounded-3xl shadow-2xl p-8 border-4 border-green-100 transform hover:scale-105 transition-all">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <i class="fas fa-leaf text-white text-2xl"></i>
+                        </div>
+                        <div class="text-5xl font-black text-green-600 mb-2" id="totalCO2Saved">0</div>
+                        <div class="text-gray-600 font-semibold">Tons CO₂ Saved</div>
+                        <div class="text-sm text-gray-500 mt-2">Annual Reduction</div>
+                    </div>
+
+                    <!-- Water Card -->
+                    <div class="bg-white rounded-3xl shadow-2xl p-8 border-4 border-cyan-100 transform hover:scale-105 transition-all">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <i class="fas fa-tint text-white text-2xl"></i>
+                        </div>
+                        <div class="text-5xl font-black text-cyan-600 mb-2" id="totalWaterSaved">0</div>
+                        <div class="text-gray-600 font-semibold">Liters Water Saved</div>
+                        <div class="text-sm text-gray-500 mt-2">Annual Conservation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="inline-block px-6 py-2 bg-purple-100 text-purple-600 rounded-full font-bold text-sm uppercase tracking-wide mb-4">
+                    <i class="fas fa-info-circle mr-2"></i>About Us
+                </span>
+                <h2 class="text-5xl font-black text-gray-900 mb-6">
+                    Revolutionizing <span class="text-blue-600">Waste Management</span><br>
+                    Through <span class="text-purple-600">AI Innovation</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    We're building the world's largest AI-powered marketplace for sustainable upcycling solutions, 
+                    connecting waste generators with innovative product ideas that create environmental and economic value.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                <div>
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-12 shadow-2xl border-4 border-blue-100">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="text-4xl font-black text-blue-600 mb-2">500+</div>
+                                <div class="text-gray-600 font-semibold">Companies</div>
+                            </div>
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="text-4xl font-black text-green-600 mb-2">50K+</div>
+                                <div class="text-gray-600 font-semibold">Tons Recycled</div>
+                            </div>
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="text-4xl font-black text-purple-600 mb-2">200+</div>
+                                <div class="text-gray-600 font-semibold">Industries</div>
+                            </div>
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div class="text-4xl font-black text-orange-600 mb-2">98%</div>
+                                <div class="text-gray-600 font-semibold">Success Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                            <span class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-bullseye text-blue-600 text-xl"></i>
+                            </span>
+                            Our Mission
+                        </h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            At AI Upcycling Platform, we harness the power of artificial intelligence to transform industrial waste 
+                            into valuable, sustainable products. Our advanced AI algorithms analyze waste materials and generate 
+                            innovative product ideas that maximize environmental benefits while creating economic opportunities.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                            <span class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-eye text-purple-600 text-xl"></i>
+                            </span>
+                            Our Vision
+                        </h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            We envision a world where waste is recognized as a valuable resource, not a problem. Through our platform, 
+                            we're building a global circular economy where every piece of waste material finds its perfect second life, 
+                            creating jobs, reducing pollution, and driving sustainable innovation across all industries.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                            <span class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-users text-green-600 text-xl"></i>
+                            </span>
+                            Our Community
+                        </h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            Join a thriving community of environmental champions, innovative manufacturers, and sustainability leaders. 
+                            Together, we're not just managing waste – we're reimagining it, transforming challenges into opportunities, 
+                            and building a more sustainable future for generations to come.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-12 shadow-2xl border-2 border-blue-100">
+                <h3 class="text-4xl font-black text-center text-gray-900 mb-12">
+                    Why Choose <span class="text-blue-600">AI Upcycling?</span>
+                </h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <i class="fas fa-robot text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-900 mb-4">AI-Powered Analysis</h4>
+                        <p class="text-gray-600 leading-relaxed">
+                            Our cutting-edge AI technology analyzes waste materials and generates innovative, 
+                            commercially viable product ideas in minutes, not months. Get instant insights into 
+                            feasibility, market demand, and environmental impact.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <i class="fas fa-shield-alt text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-900 mb-4">Verified Marketplace</h4>
+                        <p class="text-gray-600 leading-relaxed">
+                            Every product undergoes rigorous verification by our expert team. We ensure quality, 
+                            authenticity, and environmental compliance, giving you confidence in every transaction 
+                            and partnership opportunity.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <i class="fas fa-chart-line text-white text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-900 mb-4">Real Impact Tracking</h4>
+                        <p class="text-gray-600 leading-relaxed">
+                            Track your environmental impact in real-time with detailed analytics on CO₂ reduction, 
+                            water conservation, and waste diversion. Get comprehensive reports for sustainability 
+                            reporting and ESG compliance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-24 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="inline-block px-6 py-2 bg-orange-100 text-orange-600 rounded-full font-bold text-sm uppercase tracking-wide mb-4">
+                    <i class="fas fa-cogs mr-2"></i>How It Works
+                </span>
+                <h2 class="text-5xl font-black text-gray-900 mb-6">
+                    From Waste to Value in <span class="text-purple-600">4 Simple Steps</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our streamlined process makes it easy to transform your waste into profitable, sustainable products
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-8 shadow-2xl border-4 border-blue-100 h-full transform hover:scale-105 transition-all">
+                        <div class="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                            <span class="text-white text-2xl font-black">1</span>
+                        </div>
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
+                            <i class="fas fa-cloud-upload-alt text-blue-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Submit Your Waste</h3>
+                        <p class="text-gray-600 text-center leading-relaxed">
+                            Upload details about your industrial waste materials including type, quantity, properties, 
+                            and photos. Our intuitive interface makes it quick and easy.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-8 shadow-2xl border-4 border-purple-100 h-full transform hover:scale-105 transition-all">
+                        <div class="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                            <span class="text-white text-2xl font-black">2</span>
+                        </div>
+                        <div class="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
+                            <i class="fas fa-magic text-purple-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">AI Analysis</h3>
+                        <p class="text-gray-600 text-center leading-relaxed">
+                            Our advanced AI analyzes your waste and generates multiple innovative product ideas 
+                            with detailed feasibility scores, market analysis, and environmental impact projections.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-8 shadow-2xl border-4 border-green-100 h-full transform hover:scale-105 transition-all">
+                        <div class="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                            <span class="text-white text-2xl font-black">3</span>
+                        </div>
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
+                            <i class="fas fa-check-circle text-green-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Review & Verify</h3>
+                        <p class="text-gray-600 text-center leading-relaxed">
+                            Choose your best ideas and submit for verification. Our expert team reviews each submission 
+                            for quality, safety, and compliance within 1-2 business days.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-8 shadow-2xl border-4 border-orange-100 h-full transform hover:scale-105 transition-all">
+                        <div class="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                            <span class="text-white text-2xl font-black">4</span>
+                        </div>
+                        <div class="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
+                            <i class="fas fa-rocket text-orange-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">Launch & Connect</h3>
+                        <p class="text-gray-600 text-center leading-relaxed">
+                            Once approved, your product goes live on our marketplace. Connect with potential buyers, 
+                            partners, and investors. Track views, interest, and environmental impact.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-16">
+                <button onclick="window.location.href='http://localhost:3002/login'" class="px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl font-bold text-xl hover:shadow-2xl transition-all transform hover:scale-105 inline-flex items-center gap-3">
+                    <i class="fas fa-play-circle"></i>
+                    Start Your Journey Today
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Environmental Impact Section -->
+    <section id="impact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="inline-block px-6 py-2 bg-green-100 text-green-600 rounded-full font-bold text-sm uppercase tracking-wide mb-4">
+                    <i class="fas fa-leaf mr-2"></i>Environmental Impact
+                </span>
+                <h2 class="text-5xl font-black text-gray-900 mb-6">
+                    Making a Real <span class="text-green-600">Difference</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Together, our community is creating measurable positive impact on the environment
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 border-4 border-green-200 text-center transform hover:scale-105 transition-all shadow-xl">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-tree text-white text-3xl"></i>
+                    </div>
+                    <div class="text-5xl font-black text-green-600 mb-2">2.8M</div>
+                    <div class="text-gray-700 font-bold text-lg mb-2">Trees Equivalent</div>
+                    <div class="text-sm text-gray-600">Carbon offset achieved</div>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 border-4 border-blue-200 text-center transform hover:scale-105 transition-all shadow-xl">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-water text-white text-3xl"></i>
+                    </div>
+                    <div class="text-5xl font-black text-blue-600 mb-2">450M</div>
+                    <div class="text-gray-700 font-bold text-lg mb-2">Liters Conserved</div>
+                    <div class="text-sm text-gray-600">Water saved annually</div>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 border-4 border-purple-200 text-center transform hover:scale-105 transition-all shadow-xl">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-recycle text-white text-3xl"></i>
+                    </div>
+                    <div class="text-5xl font-black text-purple-600 mb-2">85%</div>
+                    <div class="text-gray-700 font-bold text-lg mb-2">Waste Diverted</div>
+                    <div class="text-sm text-gray-600">From landfills</div>
+                </div>
+
+                <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-3xl p-8 border-4 border-orange-200 text-center transform hover:scale-105 transition-all shadow-xl">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-industry text-white text-3xl"></i>
+                    </div>
+                    <div class="text-5xl font-black text-orange-600 mb-2">3,500</div>
+                    <div class="text-gray-700 font-bold text-lg mb-2">Green Jobs</div>
+                    <div class="text-sm text-gray-600">Created through platform</div>
+                </div>
+            </div>
+
+            <!-- Impact Story -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-12 shadow-2xl text-white">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-4xl font-black mb-6">Every Product Tells a Story of Impact</h3>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                            Behind every product on our platform is a story of transformation – waste materials finding new purpose, 
+                            communities gaining employment opportunities, and ecosystems being preserved. When you choose upcycled products, 
+                            you're not just making a purchase; you're investing in a sustainable future and supporting the circular economy.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-check text-white text-xl"></i>
+                                </div>
+                                <p class="text-gray-200">Reduces greenhouse gas emissions by diverting waste from landfills</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-check text-white text-xl"></i>
+                                </div>
+                                <p class="text-gray-200">Conserves natural resources and reduces raw material extraction</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-check text-white text-xl"></i>
+                                </div>
+                                <p class="text-gray-200">Creates sustainable jobs and supports local communities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 text-gray-900">
+                        <h4 class="text-2xl font-bold mb-6 text-center">Real-Time Impact Dashboard</h4>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">CO₂ Reduction Goal</span>
+                                    <span class="font-bold text-green-600">78%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div class="bg-gradient-to-r from-green-500 to-emerald-600 h-4 rounded-full" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Water Conservation</span>
+                                    <span class="font-bold text-blue-600">92%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div class="bg-gradient-to-r from-blue-500 to-cyan-600 h-4 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Waste Diversion</span>
+                                    <span class="font-bold text-purple-600">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div class="bg-gradient-to-r from-purple-500 to-pink-600 h-4 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="inline-block px-6 py-2 bg-blue-100 text-blue-600 rounded-full font-bold text-sm uppercase tracking-wide mb-4">
+                    <i class="fas fa-shopping-bag mr-2"></i>Marketplace
+                </span>
+                <h2 class="text-5xl font-black text-gray-900 mb-6">
+                    Discover <span class="text-blue-600">Innovative</span> Upcycled Products
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Browse through our curated collection of verified sustainable products created from industrial waste
+                </p>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="bg-white rounded-2xl shadow-xl p-6 mb-12 border-2 border-blue-100">
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="searchInput" placeholder="Search products..." 
+                            class="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all font-medium">
+                    </div>
+                    <select id="materialFilter" class="px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all font-medium">
+                        <option value="">🎨 All Materials</option>
+                        <option value="plastic">♻️ Plastic</option>
+                        <option value="metal">🔩 Metal</option>
+                        <option value="textile">🧵 Textile</option>
+                        <option value="paper">📄 Paper</option>
+                        <option value="glass">🥃 Glass</option>
+                        <option value="wood">🪵 Wood</option>
+                    </select>
+                    <select id="industryFilter" class="px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all font-medium">
+                        <option value="">🏭 All Industries</option>
+                        <option value="manufacturing">⚙️ Manufacturing</option>
+                        <option value="construction">🏗️ Construction</option>
+                        <option value="textile">👕 Textile</option>
+                        <option value="food">🍔 Food & Beverage</option>
+                        <option value="automotive">🚗 Automotive</option>
+                        <option value="electronics">💻 Electronics</option>
+                    </select>
+                    <select id="sortFilter" class="px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all font-medium">
+                        <option value="newest">🆕 Newest First</option>
+                        <option value="oldest">⏰ Oldest First</option>
+                        <option value="impact">🌍 Highest Impact</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-20">
+                <div class="inline-block w-16 h-16 border-8 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+                <p class="text-gray-600 mt-6 text-xl font-semibold">Loading amazing products...</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-20">
+                <div class="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-search text-gray-400 text-5xl"></i>
+                </div>
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">No products found</h3>
+                <p class="text-gray-600 text-lg mb-8">Try adjusting your filters or search terms</p>
+                <button onclick="location.reload()" class="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all">
+                    <i class="fas fa-redo mr-2"></i>Reset Filters
+                </button>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="hidden flex justify-center items-center gap-6 mt-12">
+                <button id="prevBtn" onclick="changePage(-1)" 
+                    class="px-8 py-4 bg-white border-2 border-blue-600 text-blue-600 rounded-xl font-bold hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <span id="pageInfo" class="text-gray-700 font-bold text-lg px-6 py-4 bg-white rounded-xl border-2 border-gray-200">
+                    Page 1 of 1
+                </span>
+                <button id="nextBtn" onclick="changePage(1)" 
+                    class="px-8 py-4 bg-white border-2 border-blue-600 text-blue-600 rounded-xl font-bold hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="inline-block px-6 py-2 bg-indigo-100 text-indigo-600 rounded-full font-bold text-sm uppercase tracking-wide mb-4">
+                    <i class="fas fa-envelope mr-2"></i>Get in Touch
+                </span>
+                <h2 class="text-5xl font-black text-gray-900 mb-6">
+                    Let's Start a <span class="text-indigo-600">Conversation</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Have questions about our platform? Want to partner with us? We'd love to hear from you!
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-10 border-4 border-blue-100 shadow-2xl">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+                        <i class="fas fa-paper-plane text-blue-600"></i>
+                        Send Us a Message
+                    </h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-3">
+                                <i class="fas fa-user text-blue-600 mr-2"></i>Full Name
+                            </label>
+                            <input type="text" placeholder="John Doe" required
+                                class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-3">
+                                <i class="fas fa-envelope text-blue-600 mr-2"></i>Email Address
+                            </label>
+                            <input type="email" placeholder="john@company.com" required
+                                class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-3">
+                                <i class="fas fa-building text-blue-600 mr-2"></i>Company Name (Optional)
+                            </label>
+                            <input type="text" placeholder="Your Company" 
+                                class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-3">
+                                <i class="fas fa-comment-alt text-blue-600 mr-2"></i>Your Message
+                            </label>
+                            <textarea rows="5" placeholder="Tell us how we can help you..." required
+                                class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all font-medium resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-8 py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-bold text-lg hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-3">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <!-- Contact Cards -->
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border-2 border-blue-100 hover:shadow-2xl transition-all">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                                <i class="fas fa-envelope text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-600 uppercase tracking-wide mb-1">Email Us</div>
+                                <a href="mailto:contact@upcycling.com" class="text-xl font-bold text-blue-600 hover:text-blue-700">
+                                    contact@upcycling.com
+                                </a>
+                                <div class="text-sm text-gray-500 mt-1">We'll respond within 24 hours</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border-2 border-green-100 hover:shadow-2xl transition-all">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                                <i class="fas fa-phone text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-600 uppercase tracking-wide mb-1">Call Us</div>
+                                <div class="text-xl font-bold text-gray-900">+1 (555) 123-4567</div>
+                                <div class="text-sm text-gray-500 mt-1">Mon-Fri, 9AM-6PM PST</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border-2 border-purple-100 hover:shadow-2xl transition-all">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                                <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-600 uppercase tracking-wide mb-1">Visit Us</div>
+                                <div class="text-xl font-bold text-gray-900">San Francisco, CA</div>
+                                <div class="text-sm text-gray-500 mt-1">123 Innovation Street, 94102</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Box -->
+                    <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl p-10 shadow-2xl text-white">
+                        <h4 class="text-3xl font-black mb-4">Ready to Get Started?</h4>
+                        <p class="text-indigo-100 text-lg mb-6 leading-relaxed">
+                            Join thousands of businesses transforming waste into value. Create your free account today 
+                            and start your sustainability journey with AI-powered insights.
+                        </p>
+                        <button onclick="window.location.href='/register'" 
+                            class="w-full px-8 py-4 bg-white text-indigo-600 rounded-xl font-bold text-lg hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-3">
+                            <i class="fas fa-rocket"></i>
+                            Create Free Account
+                        </button>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border-2 border-gray-100">
+                        <h4 class="text-xl font-bold text-gray-900 mb-6 text-center">Follow Our Journey</h4>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" class="w-14 h-14 bg-blue-100 hover:bg-blue-600 text-blue-600 hover:text-white rounded-xl flex items-center justify-center transition-all transform hover:scale-110">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="w-14 h-14 bg-blue-100 hover:bg-blue-700 text-blue-700 hover:text-white rounded-xl flex items-center justify-center transition-all transform hover:scale-110">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="w-14 h-14 bg-purple-100 hover:bg-purple-600 text-purple-600 hover:text-white rounded-xl flex items-center justify-center transition-all transform hover:scale-110">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="w-14 h-14 bg-gray-100 hover:bg-gray-800 text-gray-800 hover:text-white rounded-xl flex items-center justify-center transition-all transform hover:scale-110">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                    <img src="../client/public/static/logo_1.png" alt="AI Upcycling Logo" class="w-12 h-12"/>
+                        <span class="text-2xl font-black">AI Upcycling</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Transforming waste into value through AI-powered innovation. Building a sustainable future, one product at a time.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-all">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-purple-600 rounded-lg flex items-center justify-center transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-link text-blue-400"></i> Quick Links
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-400 hover:text-blue-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> About Us
+                        </a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-blue-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> Products
+                        </a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-blue-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> How It Works
+                        </a></li>
+                        <li><a href="#impact" class="text-gray-400 hover:text-blue-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> Our Impact
+                        </a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-book text-green-400"></i> Resources
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> Blog
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> Case Studies
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> Help Center
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> API Documentation
+                        </a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-gavel text-purple-400"></i> Legal
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> Privacy Policy
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> Terms of Service
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> Cookie Policy
+                        </a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-xs"></i> Compliance
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-center md:text-left">
+                    © 2025 AI Upcycling Platform. All rights reserved. <span class="text-green-400">♻️</span> Built with sustainability in mind.
+                </p>
+                <div class="flex gap-6 text-sm">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Status</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Security</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 py-8">
+            <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm transition-opacity" onclick="closeProductModal()"></div>
+            <div class="relative bg-white rounded-3xl max-w-6xl w-full shadow-2xl transform transition-all">
+                <button onclick="closeProductModal()" class="absolute -top-4 -right-4 w-14 h-14 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center transition-all transform hover:scale-110 shadow-2xl z-10">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                <div id="modalBody" class="p-10 max-h-[85vh] overflow-y-auto"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div id="reportModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm" onclick="closeReportModal()"></div>
+            <div class="relative bg-white rounded-3xl max-w-2xl w-full shadow-2xl">
+                <button onclick="closeReportModal()" class="absolute -top-4 -right-4 w-14 h-14 bg-gray-800 hover:bg-gray-900 text-white rounded-full flex items-center justify-center transition-all z-10">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+                <div class="p-10">
+                    <div class="text-center mb-8">
+                        <div class="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-flag text-red-600 text-4xl"></i>
+                        </div>
+                        <h3 class="text-4xl font-black text-gray-900 mb-3">Report This Product</h3>
+                        <p class="text-gray-600 text-lg">Help us maintain quality and safety on our platform</p>
+                    </div>
+                    <form id="reportForm" onsubmit="submitReport(event)" class="space-y-6">
+                        <input type="hidden" id="reportProductId">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-3">
+                                <i class="fas fa-exclamation-triangle text-red-600 mr-2"></i>Reason for Report *
+                            </label>
+                            <select id="reportReason" required class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-red-200 focus:border-red-500 transition-all font-medium">
+                                <option value="">Select a reason</option>
+                                <option value="inappropriate">🚫 Inappropriate Content</option>
+                                <option value="misleading">⚠️ Misleading Information</option>
+                                <option value="copyright">© Copyright Violation</option>
+                                <option value="spam">📧 Spam or Scam</option>
+
+                                <option value="other">❓ Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-3">
+                                <i class="fas fa-envelope text-blue-600 mr-2"></i>Your Email *
+                            </label>
+                            <input type="email" id="reportEmail" required placeholder="your@email.com" 
+                                class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-900 mb-3">
+                                <i class="fas fa-comment-dots text-purple-600 mr-2"></i>Additional Details (Optional)
+                            </label>
+                            <textarea id="reportDetails" rows="4" placeholder="Please provide more information about this report..." 
+                                class="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-purple-200 focus:border-purple-500 transition-all font-medium resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-8 py-5 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-xl font-bold text-lg hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-3">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Report
+                        </button>
+                        <p class="text-sm text-gray-500 text-center">
+                            <i class="fas fa-shield-alt mr-2"></i>Your report will be reviewed by our team within 24 hours
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="marketplace.js"></script>
+</body>
+</html>

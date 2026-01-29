@@ -1,0 +1,45 @@
+{
+ "name": "sdg9-backend",
+ "version": "1.0.0",
+ "description": "Backend for SDG9 Recommendation Engine",
+ "main": "server.js",
+ "scripts": {
+  "start": "nodemon server.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+ },
+ "keywords": [
+  "internship",
+  "recommendation",
+  "nodejs",
+  "express",
+  "mongodb",
+  "push-notifications"
+ ],
+ "author": "",
+ "license": "ISC",
+ "dependencies": {
+  "axios": "^1.12.2",
+  "bcryptjs": "^2.4.3",
+  "body-parser": "^1.20.3",
+  "cors": "^2.8.5",
+  "crypto": "^1.0.1",
+  "csv-parser": "^3.2.0",
+  "dotenv": "^16.4.7",
+  "express": "^4.21.2",
+  "express-rate-limit": "^8.1.0",
+  "groq-sdk": "^0.33.0",
+  "helmet": "^8.1.0",
+  "json2csv": "^6.0.0-alpha.2",
+  "jsonwebtoken": "^9.0.2",
+  "mongoose": "^8.9.6",
+  "multer": "^1.4.5-lts.1",
+  "node-cron": "^3.0.3",
+  "nodemailer": "^6.10.0",
+  "nodemon": "^3.1.9",
+  "openai": "^5.23.2",
+  "papaparse": "^5.5.2",
+  "redis": "^4.7.0",
+  "web-push": "^3.6.7",
+  "xlsx": "^0.18.5"
+ }
+}
