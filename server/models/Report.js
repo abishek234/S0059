@@ -24,7 +24,7 @@ const reportSchema = new mongoose.Schema({
     ref: 'User'
   },
   resolvedAt: { type: Date },
-  adminNotes: { type: String }
+  adminNotes: { type: mongoose.Schema.Types.Mixed, default: null }
 }, {
   timestamps: true
 });

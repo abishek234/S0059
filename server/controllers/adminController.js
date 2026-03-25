@@ -378,65 +378,74 @@ exports.getPendingReports = async (req, res) => {
 // @route   POST /api/admin/reports/:id/resolve
 // @access  Private (Admin only)
 exports.resolveReport = async (req, res) => {
-    try {
-        const { action, adminNotes } = req.body; // action: 'dismiss' or 'deactivate'
+  try {
+    const { action, adminNotes } = req.body; // action: 'dismiss' | 'deactivate'
 
-        const report = await Report.findById(req.params.id)
-            .populate('productId');
+    const report = await Report.findById(req.params.id).populate('productId');
+    if (!report) return res.status(404).json({ message: 'Report not found' });
 
-        if (!report) {
-            return res.status(404).json({ message: "Report not found" });
+    // Mark report resolved
+    report.status = 'resolved';
+    report.resolvedBy = req.user.id;
+    report.resolvedAt = new Date();
+    if (adminNotes) report.adminNotes = adminNotes;
+
+    await report.save();
+
+    // Deactivate product if needed
+    if (action === 'deactivate' && report.productId) {
+      const product = report.productId;
+      product.status = 'deactivated';
+      product.isPublic = false;
+      product.deactivationReason = `Report resolved: ${report.reason}`;
+      product.deactivatedBy = req.user.id;
+      product.deactivatedAt = new Date();
+
+      // Append adminNotes safely
+      if (adminNotes) {
+        if (Array.isArray(product.adminNotes)) {
+          product.adminNotes.push(adminNotes);
+        } else if (product.adminNotes) {
+          product.adminNotes = [product.adminNotes, adminNotes];
+        } else {
+          product.adminNotes = adminNotes;
         }
+      }
 
-        report.status = 'resolved';
-        report.resolvedBy = req.user.id;
-        report.resolvedAt = new Date();
-        if (adminNotes) report.adminNotes = adminNotes;
-
-        await report.save();
-
-        // If action is deactivate, deactivate the product
-        if (action === 'deactivate' && report.productId) {
-            report.productId.status = 'deactivated';
-            report.productId.isPublic = false;
-            report.productId.deactivationReason = `Report resolved: ${report.reason}`;
-            await report.productId.save();
-        }
-
-        // Notify user about report resolution
-        const user = await User.findById(report.productId.userId);
-
-             try {
-                await mailer.notifyUserProductDeactivatedFromReport(
-                    user.email,
-                    {
-                        name: report.productId.name,
-                        material: report.productId.material
-                    },
-                    {
-                        reason: report.reason,
-                        reporterEmail: report.reporterEmail,
-                        deactivationReason: report.productId.deactivationReason
-                    }
-                );
-            } catch (emailError) {
-                console.error('Failed to send user notification:', emailError);
-            }
-
-
-        res.json({
-            success: true,
-            message: "Report resolved successfully",
-            action: action || 'dismissed'
-        });
-
-    } catch (error) {
-        console.error("Resolve Report Error:", error);
-        res.status(500).json({
-            message: "Failed to resolve report",
-            error: error.message
-        });
+      await product.save();
     }
+
+    // Notify user about product deactivation
+    try {
+      const user = await User.findById(report.productId.userId);
+      if (user && action === 'deactivate') {
+        await mailer.notifyUserProductDeactivatedFromReport(
+          user.email,
+          { name: report.productId.name, material: report.productId.material },
+          {
+            reason: report.reason,
+            reporterEmail: report.reporterEmail,
+            deactivationReason: report.productId.deactivationReason
+          }
+        );
+      }
+    } catch (emailError) {
+      console.error('Failed to send notification:', emailError);
+    }
+
+    res.json({
+      success: true,
+      message: 'Report resolved successfully',
+      action: action || 'dismissed'
+    });
+
+  } catch (error) {
+    console.error('Resolve Report Error:', error);
+    res.status(500).json({
+      message: 'Failed to resolve report',
+      error: error.message
+    });
+  }
 };
 
 // Get single product by ID
