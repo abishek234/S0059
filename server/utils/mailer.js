@@ -10,7 +10,7 @@ apiInstance.setApiKey(
   process.env.BREVO_API_KEY
 );
 const SENDER = {
-  email: process.env.MAIL_FROM || 'no-reply@upcycling.com',
+  email: process.env.MAIL_FROM || 'abishek.cs21@bitsathy.ac.in',
   name: 'AI Upcycling Platform'
 };
 
