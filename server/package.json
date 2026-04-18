@@ -40,6 +40,7 @@
   "papaparse": "^5.5.2",
   "redis": "^4.7.0",
   "web-push": "^3.6.7",
-  "xlsx": "^0.18.5"
+  "xlsx": "^0.18.5",
+  "@sendinblue/client": "^3.3.1"
  }
 }
